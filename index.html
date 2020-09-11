@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Vue</title>
+</head>
+<style>
+  #app {
+    text-align: center;
+  }
+</style>
+<body>
+  <div id="app">
+    <h1><span>{{ title }}</span>&nbsp;<span>{{ subtitle }}</span></h1>
+    <input v-model="subtitle">
+    <button @click="clicked">点一下</button>
+  </div>
+</body>
+<script src="dep.js"></script>
+<script src="watcher.js"></script>
+<script src="observer.js"></script>
+<script src="compile.js"></script>
+<script src="index.js"></script>
+
+<script type="text/javascript">
+  new SimpleVue({
+    el: '#app',
+    data: {
+      title: 'hello',
+      subtitle: 'world'
+    },
+    mounted() {
+      window.setTimeout(() => {
+        this.title = '你好';
+      }, 2000);
+
+      window.setTimeout(() => {
+        this.subtitle = '世界';
+      }, 4000);
+    },
+    methods: {
+      clicked() {
+        this.title = 'hello';
+        this.subtitle = 'world';
+      }
+    }
+  });
+</script>
+
+</html>
